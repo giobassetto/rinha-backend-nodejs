@@ -1,0 +1,26 @@
+version: "3.5"
+services:
+  db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=rinha-backend
+    ports:
+      - "27017:27017"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7"
+          memory: "0.9GB"
+
+  cache:
+    hostname: cache
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.04"
+          memory: "0.5GB"
